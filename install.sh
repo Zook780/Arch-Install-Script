@@ -41,21 +41,16 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
 hwclock --systohc
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+vim /etc/locale.gen
 locale-gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "KEYMAP=us" > /etc/vconsole.conf
 echo "Hostname: "
 read hostname
 echo $hostname > /etc/hostname
 echo "127.0.0.1       localhost" >> /etc/hosts
 echo "::1             localhost" >> /etc/hosts
 echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
-mkinitcpio -P
-passwdecho "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+vim /etc/locale.gen
 locale-gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "KEYMAP=us" > /etc/vconsole.conf
 echo "Hostname: "
 read hostname
 echo $hostname > /etc/hostname
@@ -91,3 +86,5 @@ sudo make -C ~/.dwmblocks clean install
 sudo make -C ~/.st clean install
 rm -rf img/
 exit
+printf '\033c'
+echo "Installation complete rebooting !"

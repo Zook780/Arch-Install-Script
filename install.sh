@@ -73,7 +73,7 @@ mkdir /boot/efi
 mount $efipartition /boot/efi 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch
 grub-mkconfig -o /boot/grub/grub.cfg
-pacman -S --no-confirm xorg xorg-server xorg-xinit tff-jetbrains-mono sxiv mpv zathura zathura-pdf-poppler nitrogen ffmpeg python-pywal arc-gtk-theme unzip zip maim imagemagick fzf youtube-dl firefox networkmanager zsh pamixer pulseaudio pavucontrol alsa-utils vim emacs git zsh dosfstools libnotify notify-osd picom rofi sudo bluez-utils xf86-video-fbdev xf86-video-intel xf86-video-nouveau xf86-video-openchrome
+pacman -S --no-confirm xorg git xorg-server xorg-xinit tff-jetbrains-mono sxiv mpv zathura zathura-pdf-poppler nitrogen ffmpeg python-pywal arc-gtk-theme unzip zip maim imagemagick fzf youtube-dl firefox networkmanager zsh pamixer pulseaudio pavucontrol alsa-utils vim emacs git zsh dosfstools libnotify notify-osd picom rofi sudo bluez-utils xf86-video-fbdev xf86-video-intel xf86-video-nouveau xf86-video-openchrome
 git clone https://aur.archlinux.org/yay-git.git
 (cd yay-git/ && makepkg -si PKGBUILD)
 yay --noconfirm -S xava tela-icon-theme

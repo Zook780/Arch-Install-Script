@@ -1,3 +1,4 @@
+# !/bin/sh
 #  _____           _    _          _             _
 # |__  /___   ___ | | _( )___     / \   _ __ ___| |__"
 #   / // _ \ / _ \| |/ /// __|   / _ \ | '__/ __| '_ \"
@@ -19,25 +20,31 @@ echo "Make sure you have created your partitions and have network :)"
 echo ""
 echo "Using us as keyboard layout and Indian timezone"
 echo ""
+echo "Do you want to continue ?"
+read hmm
+if $hmm == y
+   continue
+else
+    echo "Incorrect option"   
 timedatectl set-ntp true
 printf '\033c'
 lsblk
 echo "Enter your boot/efi partition: "
-read efi-partition
-mkfs.fat -F32 $efi-partition
+read efi
+mkfs.fat -F32 $efi
 echo ""
 echo "Enter your root/linux partition: "
-read root-partition
-mkfs.ext4 $root-partition
+read root
+mkfs.ext4 $root
 echo ""
 echo "Enter swap partition: "
-read swap-partition
+read swap
 echo ""
-mkswap $swap-partition
-swapon $swap-partition
-mount $root-partition /mnt
+mkswap $swap
+swapon $swap
 pacstrap /mnt linux base linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
+mount $root /mnt
 arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
 hwclock --systohc

@@ -93,6 +93,7 @@ chsh -s ($which zsh)
 exit
 printf '\033c'
 cd $HOME
+wal -i pix/wall/abstract-face.png
 git clone https://github.com/Zook780/dotfiles
 sudo make -C ~/.dwm clean install
 sudo make -C ~/.dwmblocks clean install

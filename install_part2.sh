@@ -58,3 +58,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 exit
 printf '\033c'
 echo "Installation complete rebooting !"
+exit
+umount -l /mnt
+reboot

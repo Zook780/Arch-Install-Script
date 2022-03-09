@@ -1,5 +1,7 @@
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
+echo "installing vim"
+pacman --noconfirm -S vim
 vim /etc/locale.gen
 locale-gen
 echo "Hostname: "
@@ -32,14 +34,19 @@ mkdir /boot/EFI
 mount $efipartition /boot/EFI
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch
 grub-mkconfig -o /boot/grub/grub.cfg
-pacman -S --no-confirm xorg git xorg-server xorg-xinit tff-jetbrains-mono sxiv mpv zathura zathura-pdf-poppler nitrogen ffmpeg python-pywal arc-gtk-theme unzip zip maim imagemagick fzf youtube-dl firefox networkmanager zsh pamixer pulseaudio pavucontrol alsa-utils vim emacs git zsh dosfstools libnotify notify-osd
-picom rofi sudo bluez-utils xf86-video-fbdev xf86-video-intel xf86-video-nouveau xf86-video-openchrome
+pacman -S --noconfirm xorg git xorg-server xorg-xinit sxiv mpv \
+       zathura zathura-pdf-poppler nitrogen ffmpeg python-pywal \
+       arc-gtk-theme unzip zip maim imagemagick fzf youtube-dl \
+       firefox networkmanager zsh pamixer pulseaudio pavucontrol \
+       alsa-utils vim sudo emacs git zsh dosfstools libnotify \
+       notify-osd picom rofi sudo bluez-utils xf86-video-fbdev \
+       xf86-video-intel xf86-video-nouveau xf86-video-openchrome
 git clone https://aur.archlinux.org/yay-git.git
 (cd yay-git/ && makepkg -si PKGBUILD)
-yay --noconfirm -S tela-icon-theme
+yay --noconfirm -S tela-icon-theme ttf-mononoki ttf-jetbrains-mono
 systemctl enable NetworkManager
 vim /etc/sudoers
-chsh -s ($which zsh)
+chsh -s /usr/bin/zsh
 exit
 printf '\033c'
 cd $HOME

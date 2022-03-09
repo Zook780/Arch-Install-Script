@@ -16,33 +16,31 @@ printf '\033c'
 
 echo "Hi you want to install arch linux with my dotfiles :flush_emoji:"
 echo ""
-echo "Make sure you have created your partitions and have network :)"
+echo "Make sure you have network :)"
 echo ""
 echo "Using US keyboard layout and Indian timezone"
 echo ""
-echo "Do you want to continue ? answer with continue"  
+echo "Do you want to continue ? press enter"  
 read hmm
-if $hmm == continue
+if $hmm == just for enter key press
 then
 continue
-else 
-echo "Incorrect option"   
-fi
 timedatectl set-ntp true
 printf '\033c'
+cfdisk /dev/sda  
 lsblk
-echo "Enter your boot/efi partition: "
+echo "type your boot/efi partition"
 read efi
 mkfs.fat -F32 $efi
 echo ""
 echo ""
-echo "Enter swap partition: "
+echo "type your swap partition"
 read swap
 echo ""
 mkswap $swap
 swapon $swap
 echo ""
-echo "Enter your root/linux partition: "
+echo "type your root partition"
 read root
 mkfs.ext4 $root
 mount $root /mnt

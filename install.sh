@@ -35,17 +35,19 @@ echo "Enter your boot/efi partition: "
 read efi
 mkfs.fat -F32 $efi
 echo ""
-echo "Enter your root/linux partition: "
-read root
-mkfs.ext4 $root
 echo ""
 echo "Enter swap partition: "
 read swap
 echo ""
 mkswap $swap
 swapon $swap
+echo ""
+echo "Enter your root/linux partition: "
+read root
+mkfs.ext4 $root
 mount $root /mnt
 pacstrap /mnt linux base linux-firmware
-mv Arch-Install-Script/install_part2.sh /mnt/
 genfstab -U /mnt >> /mnt/etc/fstab
+chmod +x ./install_part2.sh
 arch-chroot /mnt ./install_part2.sh
+exit

@@ -33,7 +33,7 @@ pacman -S --noconfirm xorg git xorg-server xorg-xinit sxiv mpv \
 systemctl enable NetworkManager
 vim /etc/sudoers
 printf '\033c'
-chsh -s /usr/bin/zsh
+chsh $username -s /bin/zsh
 pacman --noconfirm -S grub mtools efibootmgr os-prober dosfstools
 echo "enter EFI partition" 
 read efipartition

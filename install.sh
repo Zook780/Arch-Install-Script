@@ -22,9 +22,6 @@ echo "Using US keyboard layout and Indian timezone"
 echo ""
 echo "Do you want to continue ? press enter"  
 read hmm
-if $hmm == just for enter key press
-then
-continue
 timedatectl set-ntp true
 printf '\033c'
 cfdisk /dev/sda  

@@ -22,9 +22,7 @@ useradd -m $username
 usermod -aG wheel,audio,network,video,optical,storage $username
 echo "set user password"
 passwd $username
-echo ""
 echo "installing packages"
-ech0 ""
 pacman -S --noconfirm xorg git xorg-server xorg-xinit sxiv mpv \
        zathura zathura-pdf-poppler nitrogen ffmpeg ncmpcpp python-pywal \
        mutt qt5ct ranger unzip zip maim imagemagick fzf youtube-dl \

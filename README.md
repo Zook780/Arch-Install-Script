@@ -7,6 +7,7 @@
 ``
 curl -LO https://raw.githubusercontent/Zook780/Arch-Install-Script/master/install.sh
 ``
+
 ``
 curl -LO https://raw.githubusercontent/Zook780/Arch-Install-Script/master/install_part2.sh ; chmod +x install.sh ; ./install.sh
 ``

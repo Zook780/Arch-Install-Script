@@ -43,7 +43,7 @@ mkfs.ext4 $root
 mount $root /mnt
 pacstrap /mnt linux base linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
+echo "ParallelDownloads = 5" >> /etc/pacman.conf
 chmod +x ./install_part2.sh
 cp install_part2.sh /mnt/
 arch-chroot /mnt ./install_part2.sh
-exit

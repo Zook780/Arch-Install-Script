@@ -1,5 +1,6 @@
-echo "change #include path in .dwm .dwmblocks .st .dwmblocks (press enter)"
-read "stop"
+echo "change #include path in .dwm .dwmblocks .st .dwmblocks (press enter after changing the path)"
+read yes
+wal -i pix/wall/abstract-face.png
 sudo make -C ~/.dwm/ clean install
 sudo make -C ~/.dwmblocks/ clean install
 sudo make -C ~/.st/ clean install
@@ -28,5 +29,4 @@ cp -r dotfiles/.zshrc ./
 rm -rf dotfiles/img
 cp -r dotfiles/pix ./
 rm -rf dotfiles/
-wal -i pix/wall/abstract-face.png
 rm -rf img/

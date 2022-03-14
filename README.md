@@ -15,5 +15,5 @@ curl -LO https://raw.githubusercontent/Zook780/Arch-Install-Script/master/instal
 ### After you reboot and install base system 
 
 ``
-curl -LO https://raw.githubusercontent/Zook780/Arch-Install-Script/master/install_part3.sh
+curl -LO https://raw.githubusercontent/Zook780/Arch-Install-Script/master/install_part3.sh ; chmod +x install_part3.sh ; ./install_part3.sh
 ``

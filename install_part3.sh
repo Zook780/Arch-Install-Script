@@ -1,9 +1,5 @@
-echo "change #include path in .dwm .dwmblocks .st .dwmblocks (press enter after changing the path)"
+echo "change #include path in .dwm .dwmblocks .st .dwmblocks"
 read yes
-wal -i pix/wall/abstract-face.png
-sudo make -C ~/.dwm/ clean install
-sudo make -C ~/.dwmblocks/ clean install
-sudo make -C ~/.st/ clean install
 git clone https://aur.archlinux.org/yay-git.git
 cd yay-git/
 makepkg -si
@@ -30,3 +26,7 @@ rm -rf dotfiles/img
 cp -r dotfiles/pix ./
 rm -rf dotfiles/
 rm -rf img/
+wal -i pix/wall/abstract-face.png
+sudo make -C ~/.dwm/ clean install
+sudo make -C ~/.dwmblocks/ clean install
+sudo make -C ~/.st/ clean install

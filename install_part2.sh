@@ -23,15 +23,15 @@ usermod -aG wheel,audio,network,video,optical,storage $username
 echo "set user password"
 passwd $username
 echo "installing packages"
-pacman -S --noconfirm xorg git xorg-server xorg-xinit sxiv mpv \
-       zathura zathura-pdf-poppler nitrogen ffmpeg ncmpcpp python-pywal \
-       mutt qt5ct ranger unzip zip maim imagemagick fzf youtube-dl \
-       firefox base-devel networkmanager zsh pamixer noto-fonts pulseaudio pavucontrol \
-       alsa-utils vim sudo emacs zip unzip git libnotify noto-fonts-emoji noto-fonts-cjk\
-       notify-osd picom vim sudo bluez-utils xdg-user-dirs xf86-video-fbdev \
-       xf86-video-intel xf86-video-nouveau xf86-video-openchrome
+pacman -S --noconfirm xorg git xorg-server xorg-xinit sxiv mpv mpd \
+       zathura zathura-pdf-poppler nitrogen ffmpeg ncmpcpp python-pywal redshift \      # redshift is for night light
+       ranger unzip zip maim imagemagick fzf youtube-dl newsboat pulseaudio \
+       firefox neomutt base-devel networkmanager zsh pamixer noto-fonts pavucontrol \
+       alsa-utils emacs qt5ct git libnotify blueberry noto-fonts-emoji noto-fonts-cjk vim \
+       dunst picom sudo bluez-utils xdg-user-dirs xf86-video-fbdev ueberzug lxappearance \   # ueberzug for image preview in ranger
+       xf86-video-intel xf86-video-nouveau xf86-video-openchrome 
 systemctl enable NetworkManager
-vim /etc/sudoers
+EDITOR=vim visudo
 printf '\033c'
 chsh $username -s /bin/zsh
 pacman --noconfirm -S grub mtools efibootmgr os-prober dosfstools

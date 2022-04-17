@@ -1,39 +1,58 @@
 printf '\033c'
 echo "Part 2"
 echo ""
+
+# timezone
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
+
+# vim install
 echo "installing vim"
 pacman --noconfirm -S vim
+
+# generate locale
 vim /etc/locale.gen
 locale-gen
+
+# set hostname
 echo "enter your hostname"
 read hostname
 echo $hostname > /etc/hostname
 echo "127.0.0.1       localhost" >> /etc/hosts
 echo "::1             localhost" >> /etc/hosts
 echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
+
+# set root password
 echo "root password"
 passwd
 echo ""
+
+# set username and add user
 echo "set username"
 read username
 useradd -m $username
+
+# add the user to various groups
 usermod -aG wheel,audio,network,video,optical,storage $username
 echo "set user password"
+
+# set user password 
 passwd $username
 echo "installing packages"
-pacman -S --noconfirm xorg git xorg-server xorg-xinit sxiv mpv mpd \
-       zathura zathura-pdf-poppler nitrogen ffmpeg ncmpcpp python-pywal redshift \      # redshift is for night light
-       ranger unzip zip maim imagemagick fzf youtube-dl newsboat pulseaudio \
-       firefox neomutt base-devel networkmanager zsh pamixer noto-fonts pavucontrol \
-       alsa-utils emacs qt5ct git libnotify blueberry noto-fonts-emoji noto-fonts-cjk vim \
-       dunst picom sudo bluez-utils xdg-user-dirs xf86-video-fbdev ueberzug lxappearance \   # ueberzug for image preview in ranger
-       xf86-video-intel xf86-video-nouveau xf86-video-openchrome 
+
+# for network
+pacman --noconfirm -S NetworkManager
 systemctl enable NetworkManager
+
+# edit sudo config
 EDITOR=vim visudo
 printf '\033c'
+
+# change shell to zsh
+pacman --noconfirm -S zsh
 chsh $username -s /bin/zsh
+
+# boot (GRUB)
 pacman --noconfirm -S grub mtools efibootmgr os-prober dosfstools
 echo "enter EFI partition" 
 read efipartition

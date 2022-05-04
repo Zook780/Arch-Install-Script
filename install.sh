@@ -28,9 +28,8 @@ timedatectl set-ntp true
 printf '\033c'
 
 # partition your disk
-cfdisk /dev/sda  
-
 lsblk
+cfdisk /dev/sda  
 
 # format the boot partition
 echo "type your boot/efi partition"
@@ -53,7 +52,7 @@ read root
 mkfs.ext4 $root
 mount $root /mnt
 
-# install the basic system (kernel, etc..) to /mnt
+# install the basic system (kernel, firmware, etc..) to /mnt
 pacstrap /mnt linux base linux-firmware
 
 # generate file system table
